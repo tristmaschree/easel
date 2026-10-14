@@ -26,11 +26,17 @@ JV.features.sidebarTree = (() => {
     return [h("div", { class: "jv-tree-kids jv-anim" }, inner), inner];
   }
 
-  function leaf(label, url, level, active) {
+  // `due` (optional): the due-soon items that live under this section, shown
+  // as a count so you can see where a course's badge comes from.
+  function leaf(label, url, level, active, due) {
+    const title = due?.length
+      ? [label, ...due.map((it) => `• ${it.title} — due ${JV.util.fmtDue(new Date(it.due))}`)].join("\n")
+      : label;
     return h(
       "a",
-      { class: `jv-tree-leaf${active ? " is-active" : ""}`, href: url, title: label, style: { "--lvl": level }, "aria-current": active ? "page" : null },
-      h("span", { class: "jv-tree-label" }, label)
+      { class: `jv-tree-leaf${active ? " is-active" : ""}`, href: url, title, style: { "--lvl": level }, "aria-current": active ? "page" : null },
+      h("span", { class: "jv-tree-label" }, label),
+      due?.length ? h("span", { class: "jv-tree-count" }, due.length) : null
     );
   }
 
@@ -65,13 +71,41 @@ JV.features.sidebarTree = (() => {
     return best;
   }
 
-  async function fillTabs(inner, kind, id, level) {
+  // Which section a due item belongs under: the tab whose path prefixes the
+  // item's URL (…/assignments/12 -> Assignments), else a tab chosen by item
+  // type (graded quizzes and discussions also live under Assignments), else Home.
+  const TYPE_TABS = {
+    quiz: ["quizzes", "assignments"],
+    discussion_topic: ["discussion_topics", "assignments"],
+    wiki_page: ["pages", "wiki"],
+    assignment: ["assignments"],
+    sub_assignment: ["assignments"],
+  };
+  function tabIndexFor(tabs, item) {
+    const paths = tabs.map((t) => new URL(t.url, location.origin).pathname.replace(/\/$/, ""));
+    const itemPath = new URL(item.url || "/", location.origin).pathname;
+    let best = -1, bestLen = 0;
+    paths.forEach((p, i) => {
+      if (/^\/(courses|groups)\/\d+$/.test(p)) return; // Home matches everything
+      if (itemPath.startsWith(p + "/") && p.length > bestLen) [best, bestLen] = [i, p.length];
+    });
+    if (best >= 0) return best;
+    for (const seg of TYPE_TABS[item.type] || []) {
+      const i = paths.findIndex((p) => p.endsWith(`/${seg}`));
+      if (i >= 0) return i;
+    }
+    return 0;
+  }
+
+  async function fillTabs(inner, kind, id, level, due = []) {
     const here = context();
     const isCurrent = !!here && here.kind === kind && here.id === id;
     const render = (tabs) => {
-      if (!tabs || !tabs.length) return inner.replaceChildren(leaf("Home", `/${kind}/${id}`, level, isCurrent));
+      if (!tabs || !tabs.length) return inner.replaceChildren(leaf("Home", `/${kind}/${id}`, level, isCurrent, due));
       const act = isCurrent ? activeIndex(tabs) : -1;
-      inner.replaceChildren(...tabs.map((t, i) => leaf(t.label, t.url, level, i === act)));
+      const byTab = tabs.map(() => []);
+      for (const it of due) byTab[tabIndexFor(tabs, it)].push(it);
+      inner.replaceChildren(...tabs.map((t, i) => leaf(t.label, t.url, level, i === act, byTab[i])));
     };
     if (isCurrent) {
       const scraped = scrapeTabs();
@@ -86,7 +120,7 @@ JV.features.sidebarTree = (() => {
   }
 
   // An expandable course or group. Sections load the first time it opens.
-  function folder({ key, kind, id, label, sub, color, count, level }) {
+  function folder({ key, kind, id, label, sub, color, due = [], level }) {
     const here = context();
     const isCurrent = !!here && here.kind === kind && here.id === id;
     const [wrap, inner] = kids();
@@ -97,7 +131,7 @@ JV.features.sidebarTree = (() => {
       color ? h("span", { class: "jv-tree-dot" }) : null,
       h("span", { class: "jv-tree-label" }, label),
       h("span", { class: "jv-tree-sub" }, sub || ""),
-      count ? h("span", { class: "jv-tree-count", title: `${count} due in the next 48 hours` }, count) : null
+      due.length ? h("span", { class: "jv-tree-count", title: `${due.length} due in the next 48 hours` }, due.length) : null
     );
     const el = h("div", { class: "jv-tree-folder" }, row, wrap);
     let loaded = false;
@@ -106,7 +140,7 @@ JV.features.sidebarTree = (() => {
       row.setAttribute("aria-expanded", String(open));
       if (open && !loaded) {
         loaded = true;
-        fillTabs(inner, kind, id, level + 1);
+        fillTabs(inner, kind, id, level + 1, due);
       }
     };
     row.addEventListener("click", () => {
@@ -156,9 +190,21 @@ JV.features.sidebarTree = (() => {
 
   // ---------- branches ----------
 
+  // Same rule as the badge on the collapsed strip's chips: not done, due in the next 48h.
+  function dueSoonItems(items) {
+    const now = Date.now();
+    const out = {};
+    for (const it of items || []) {
+      if (it.done || !it.courseId) continue;
+      const t = new Date(it.due).getTime();
+      if (t >= now && t - now <= 48 * JV.util.HOUR) (out[it.courseId] ||= []).push(it);
+    }
+    return out;
+  }
+
   async function buildCourses(inner) {
     let courses = [];
-    let counts = {};
+    let soon = {}; // courseId -> due-soon planner items
     const draw = () => {
       const here = context();
       const activeId = here?.kind === "courses" ? here.id : null;
@@ -182,7 +228,7 @@ JV.features.sidebarTree = (() => {
             label: c.isClass ? c.short : c.name,
             sub: c.isClass ? c.name.replace(/^[^:]*:\s*/, "") : "",
             color: c.color,
-            count: counts[c.id],
+            due: soon[c.id] || [],
             level: 1,
           })
         ),
@@ -190,13 +236,12 @@ JV.features.sidebarTree = (() => {
       );
     };
     draw();
-    const dueSoon = JV.features.sidebarCourses.dueSoonByCourse;
     const [c, planner] = await Promise.all([
       JV.data.courses((fresh) => { courses = fresh; draw(); }).catch(() => []),
-      JV.data.plannerItems((fresh) => { counts = dueSoon(fresh); draw(); }).catch(() => []),
+      JV.data.plannerItems((fresh) => { soon = dueSoonItems(fresh); draw(); }).catch(() => []),
     ]);
     courses = c || [];
-    counts = dueSoon(planner);
+    soon = dueSoonItems(planner);
     draw();
   }
 
