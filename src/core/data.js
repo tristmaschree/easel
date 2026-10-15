@@ -2,7 +2,8 @@
 // fires if a stale cached value was returned and fresher data has arrived.
 JV.data = (() => {
   const { api, cache, util } = JV;
-  const FALLBACK_COLORS = ["#0770A3", "#8F3E97", "#127A1B", "#BF32A4", "#D97900", "#0B874B", "#E71F63", "#4D3D4D"];
+  // For courses with no colour set in Canvas: Google brand colours (see styles/palette.css).
+  const FALLBACK_COLORS = ["#4285F4", "#EA4335", "#FBBC04", "#34A853", "#174EA6", "#A50E0E", "#E37400", "#0D652D"];
 
   function courses(onFresh) {
     return cache.swr("courses:v2", 30 * util.MIN, async () => {
