@@ -1,0 +1,26 @@
+/*
+ * Easel's colour palette: Google's brand colours, from the Google News
+ * visual identity guide. Every accent in Easel's own UI and its restyling of
+ * Canvas reads from these. Course colours (set per course in Canvas) and the
+ * school's logo are left as they are.
+ *
+ * Dark shades are for text and small icons on white (they pass contrast);
+ * medium shades for fills, bars and larger icons; light shades for tints.
+ */
+:root {
+  --jv-blue: #4285f4;
+  --jv-blue-dark: #174ea6;
+  --jv-blue-light: #d2e3fc;
+  --jv-red: #ea4335;
+  --jv-red-dark: #a50e0e;
+  --jv-red-light: #fad2cf;
+  --jv-yellow: #fbbc04;
+  --jv-orange: #e37400;
+  --jv-yellow-light: #feefc3;
+  --jv-green: #34a853;
+  --jv-green-dark: #0d652d;
+  --jv-green-light: #ceead6;
+  --jv-grey-light: #f1f3f4;
+  --jv-grey: #9aa0a6;
+  --jv-black: #202124;
+}

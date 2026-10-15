@@ -7,13 +7,14 @@
 @media (min-width: 768px) {
   html.jv-tree {
     --jv-nav-w: 248px;
-    /* Light theme: white sidebar, the school's nav colour as the accent. */
-    --jv-accent: var(--ic-brand-global-nav-bgd, #0374b5);
+    /* Light theme: white sidebar with Google blue accents (styles/palette.css). */
+    --jv-accent: var(--jv-blue);
+    --jv-accent-text: var(--jv-blue-dark);
     --jv-nav-fg: #273540;
     --jv-nav-muted: #6b7780;
     --jv-nav-line: #e3e6e9;
     --jv-nav-hover: rgba(39, 53, 64, 0.06);
-    --jv-nav-active: color-mix(in srgb, var(--jv-accent) 10%, transparent);
+    --jv-nav-active: color-mix(in srgb, var(--jv-blue-light) 70%, transparent);
     --jv-person: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round'%3E%3Ccircle cx='10' cy='10' r='9'/%3E%3Ccircle cx='10' cy='8' r='3'/%3E%3Cpath d='M4.3 16.6c1-2.5 3.1-3.9 5.7-3.9s4.700 1.400 5.700 3.900'/%3E%3C/svg%3E");
   }
 
@@ -44,7 +45,7 @@
     content: "";
     position: absolute;
     inset: 0 1px 0 0;
-    background: var(--jv-accent);
+    background: var(--ic-brand-global-nav-bgd, var(--jv-accent)); /* the school's colour */
     mix-blend-mode: screen;
     pointer-events: none;
   }
@@ -197,7 +198,7 @@
     right: 12px !important;
     transform: translateY(-50%);
     box-shadow: none;
-    background: var(--jv-accent);
+    background: var(--jv-red);
     color: #fff;
   }
   /* Icons carry the accent colour; labels stay neutral. */
@@ -230,7 +231,7 @@
     color: var(--jv-accent);
   }
   html.jv-tree #menu .ic-app-header__menu-list-item--active .menu-item__text {
-    color: var(--jv-accent) !important;
+    color: var(--jv-accent-text) !important;
     font-weight: 700;
   }
   html.jv-tree #menu .jv-tree-top.ic-app-header__menu-list-item--active .menu-item__text {
@@ -328,7 +329,7 @@
     background: var(--jv-nav-hover);
   }
   html.jv-tree .jv-tree-leaf.is-active {
-    color: var(--jv-accent) !important;
+    color: var(--jv-accent-text) !important;
     font-weight: 700;
   }
   html.jv-tree .jv-tree-leaf.is-active::before {
@@ -377,7 +378,7 @@
     height: 16px;
     padding: 0 4px;
     border-radius: 8px;
-    background: var(--jv-accent);
+    background: var(--jv-red);
     color: #fff;
     font-size: 10px;
     font-weight: 700;

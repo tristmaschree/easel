@@ -93,7 +93,7 @@ html:not(.jv-no-polish) a:focus-visible,
 html:not(.jv-no-polish) button:focus-visible,
 html:not(.jv-no-polish) .btn:focus-visible,
 html:not(.jv-no-polish) .Button:focus-visible {
-  outline: 2px solid var(--ic-link-color, #286dc0);
+  outline: 2px solid var(--jv-blue);
   outline-offset: 2px;
   box-shadow: none;
 }
@@ -272,7 +272,7 @@ html:not(.jv-no-polish) .dropdown-menu {
 
 html:not(.jv-no-polish) .ic-Action-header__Heading,
 html:not(.jv-no-polish) #content h1.page-title {
-  color: var(--ic-brand-global-nav-bgd, #273540);
+  color: var(--jv-black);
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -289,7 +289,7 @@ html:not(.jv-no-polish) .user_content > :is(p, ul, ol, blockquote, h1, h2, h3, h
 html:not(.jv-no-polish) .user_content :is(h1, h2, h3, h4, h5, h6)[style*="background"] {
   margin: 2rem 0 0.75rem !important;
   padding: 2px 0 2px 10px !important;
-  border-left: 3px solid var(--ic-link-color, #286dc0);
+  border-left: 3px solid var(--jv-blue);
   border-radius: 2px;
   background: none !important;
   color: #273540 !important;
@@ -355,7 +355,7 @@ html:not(.jv-no-polish) #right-side .button-sidebar-wide:hover {
   background: rgba(39, 53, 64, 0.06);
 }
 html:not(.jv-no-polish) #right-side .button-sidebar-wide i {
-  color: var(--ic-link-color, #286dc0);
+  color: var(--jv-blue);
 }
 /* Section headings: small caps labels instead of ruled-off bold titles. */
 html:not(.jv-no-polish) #right-side h2:not(#minical h2) {
@@ -404,41 +404,41 @@ html:not(.jv-no-polish) .ig-row .ig-type-icon {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: color-mix(in srgb, var(--jv-tile, #286dc0) 12%, transparent);
-  color: var(--jv-tile, #286dc0) !important;
+  background: color-mix(in srgb, var(--jv-tile, var(--jv-blue)) 12%, transparent);
+  color: var(--jv-tile, var(--jv-blue)) !important;
 }
 html:not(.jv-no-polish) .ig-row .ig-type-icon i {
   color: inherit !important;
 }
 /* Type colours. Assignments keep the default blue. */
 html:not(.jv-no-polish) .ig-row:has(.ig-type-icon > .icon-quiz) {
-  --jv-tile: #7b3fa0;
+  --jv-tile: var(--jv-red);
 }
 html:not(.jv-no-polish) .ig-row:has(.ig-type-icon > .icon-discussion) {
-  --jv-tile: #0b874b;
+  --jv-tile: var(--jv-green);
 }
 html:not(.jv-no-polish) .ig-row:has(.ig-type-icon > .icon-document) {
-  --jv-tile: #b35c00;
+  --jv-tile: var(--jv-orange);
 }
 /* Module rows carry every type's icon in the markup (one shown), so their
    type comes from the list item's class instead. */
 html:not(.jv-no-polish) .context_module_item .ig-row {
-  --jv-tile: #286dc0;
+  --jv-tile: var(--jv-blue);
 }
 html:not(.jv-no-polish) .context_module_item:is(.quiz, .lightweight-quiz, .lti-quiz) .ig-row {
-  --jv-tile: #7b3fa0;
+  --jv-tile: var(--jv-red);
 }
 html:not(.jv-no-polish) .context_module_item.discussion_topic .ig-row {
-  --jv-tile: #0b874b;
+  --jv-tile: var(--jv-green);
 }
 html:not(.jv-no-polish) .context_module_item.wiki_page .ig-row {
-  --jv-tile: #b35c00;
+  --jv-tile: var(--jv-orange);
 }
 html:not(.jv-no-polish) .context_module_item:is(.external_url, .context_external_tool) .ig-row {
-  --jv-tile: #0a7d86;
+  --jv-tile: var(--jv-blue-dark);
 }
 html:not(.jv-no-polish) .context_module_item.attachment .ig-row {
-  --jv-tile: #5b6770;
+  --jv-tile: var(--jv-black);
 }
 
 /* Breadcrumbs on course pages: the course becomes a tinted chip, with a dot
@@ -449,7 +449,8 @@ html:not(.jv-no-polish) body[class*="context-course_"] #breadcrumbs li:nth-of-ty
   gap: 6px;
   padding: 3px 10px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--ic-link-color, #286dc0) 10%, transparent);
+  background: color-mix(in srgb, var(--jv-blue-light) 70%, transparent);
+  color: var(--jv-blue-dark);
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
@@ -520,8 +521,8 @@ html:not(.jv-no-polish) #section-tabs a:hover {
   background: rgba(39, 53, 64, 0.06);
 }
 html:not(.jv-no-polish) #section-tabs a.active {
-  background: color-mix(in srgb, var(--ic-brand-global-nav-bgd, #0374b5) 10%, transparent);
-  color: var(--ic-brand-global-nav-bgd, #0374b5);
+  background: color-mix(in srgb, var(--jv-blue-light) 70%, transparent);
+  color: var(--jv-blue-dark);
   font-weight: 700;
 }
 
