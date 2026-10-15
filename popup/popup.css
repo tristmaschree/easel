@@ -3,7 +3,7 @@
   --fg: #273540;
   --muted: #6b7780;
   --line: #e8eaec;
-  --accent: #0e68b3;
+  --accent: #174ea6; /* Google blue (dark) */
   --chip: #f2f4f5;
 }
 @media (prefers-color-scheme: dark) {
@@ -12,7 +12,7 @@
     --fg: #e8ecef;
     --muted: #9aa5ad;
     --line: #2e353c;
-    --accent: #5aa5e6;
+    --accent: #4285f4; /* Google blue */
     --chip: #2a3138;
   }
 }

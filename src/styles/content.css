@@ -86,7 +86,7 @@
   transform: translateY(-50%);
   padding: 4px 12px;
   border-radius: 8px;
-  background: color-mix(in srgb, var(--ic-link-color, #286dc0) 82%, transparent);
+  background: color-mix(in srgb, var(--jv-black) 88%, transparent);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   backdrop-filter: blur(12px) saturate(180%);
   color: #fff;
@@ -102,7 +102,7 @@
   top: 50%;
   transform: translateY(-50%);
   border: 6px solid transparent;
-  border-right-color: color-mix(in srgb, var(--ic-link-color, #286dc0) 82%, transparent);
+  border-right-color: color-mix(in srgb, var(--jv-black) 88%, transparent);
 }
 .jv-tip[hidden] {
   display: none;
@@ -149,8 +149,8 @@
   align-self: flex-start;
   padding: 1px 8px;
   border-radius: 999px;
-  background: #eef4fb;
-  color: #0e68b3;
+  background: color-mix(in srgb, var(--jv-blue-light) 70%, transparent);
+  color: var(--jv-blue-dark);
   font-weight: 700;
 }
 .jv-card-due {

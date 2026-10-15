@@ -299,13 +299,13 @@ JV.features.palette = (() => {
     .list { list-style: none; margin: 0; padding: 6px; overflow-y: auto; flex: 1; }
     /* Fixed height so one-line rows (Dashboard, Calendar…) match two-line course rows. */
     .item { display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 10px; border-radius: 8px; cursor: pointer; }
-    .item.active { background: rgba(14, 104, 179, .13); }
+    .item.active { background: color-mix(in srgb, var(--jv-blue-light) 70%, transparent); }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
     .text { flex: 1; min-width: 0; }
     .title { font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .sub { font-size: 12px; line-height: 1.3; color: #6b7780; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .kind { font-size: 11px; color: #6b7780; background: rgba(0,0,0,.06); border-radius: 4px; padding: 2px 6px; flex: none; }
-    .item.active .kind { background: rgba(14, 104, 179, .16); color: #0e68b3; }
+    .item.active .kind { background: var(--jv-blue-light); color: var(--jv-blue-dark); }
     .none { padding: 24px; text-align: center; color: #8b969e; }
     footer { display: flex; justify-content: space-between; gap: 8px; padding: 8px 14px; border-top: 1px solid rgba(0,0,0,.08); font-size: 12px; color: #6b7780; }
     kbd { font-family: inherit; background: rgba(255,255,255,.6); border: 1px solid rgba(0,0,0,.12); border-radius: 4px; padding: 0 4px; font-size: 11px; }
