@@ -100,7 +100,7 @@ JV.features.due = (() => {
 
     return h(
       "li",
-      { class: `row${it.done ? " done" : ""}`, style: { "--c": course?.color || "#8b969e" } },
+      { class: `row${it.done ? " done" : ""}`, style: { "--c": course?.color || "var(--jv-faint)" } },
       check,
       h(
         "div",
@@ -284,8 +284,8 @@ JV.features.due = (() => {
     :host([hidden]) { display: none; }
     * { box-sizing: border-box; }
     .panel {
-      --fg: #273540; --muted: #6b7780; --faint: #8b969e; --line: #e3e6e9;
-      --hover: rgba(39, 53, 64, .06);
+      --fg: var(--jv-fg); --muted: var(--jv-muted); --faint: var(--jv-faint); --line: var(--jv-line);
+      --hover: var(--jv-hover);
       --accent: var(--jv-blue); --accent-text: var(--jv-blue-dark);
       position: fixed; top: 0; bottom: 0; left: var(--jv-left, 0px);
       width: min(380px, calc(100vw - var(--jv-left, 0px)));
@@ -298,7 +298,7 @@ JV.features.due = (() => {
       font-size: 13.5px; line-height: 1.3;
       /* Slides out from *under* the sidebar: a divider and soft shadow on the
          right only; the clip stops the shadow spilling left onto the sidebar. */
-      box-shadow: inset -1px 0 0 rgba(255, 255, 255, .6), 1px 0 0 var(--line), 12px 0 28px rgba(16, 24, 32, .1);
+      box-shadow: inset -1px 0 0 rgba(255, 255, 255, .6), 1px 0 0 var(--line), 12px 0 28px rgba(32, 33, 36, .1);
       clip-path: inset(0 -60px 0 0);
       display: flex; flex-direction: column;
     }
@@ -308,7 +308,7 @@ JV.features.due = (() => {
     .toggle input { margin: 0; accent-color: var(--accent); }
     .icon { border: 0; background: none; color: var(--muted); width: 30px; height: 30px; border-radius: 8px; cursor: pointer; display: grid; place-items: center; }
     .icon:hover { background: var(--hover); color: var(--fg); }
-    .body { flex: 1; overflow-y: auto; padding: 4px 0 24px; scrollbar-width: thin; scrollbar-color: rgba(39, 53, 64, .2) transparent; }
+    .body { flex: 1; overflow-y: auto; padding: 4px 0 24px; scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--jv-black) 20%, transparent) transparent; }
     .body.loading { opacity: .5; }
     section { padding: 0 6px; }
     h3 { margin: 14px 12px 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--faint); display: flex; gap: 6px; align-items: center; }
@@ -319,7 +319,7 @@ JV.features.due = (() => {
     .row { display: flex; align-items: center; gap: 10px; padding: 7px 12px; border-radius: 8px; }
     .row:hover { background: var(--hover); }
     .check {
-      flex: none; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #c1c8cd; background: rgba(255, 255, 255, .7);
+      flex: none; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--jv-line-strong); background: rgba(255, 255, 255, .7);
       color: transparent; display: grid; place-items: center; cursor: pointer; padding: 0;
     }
     .check:hover { border-color: var(--accent); color: var(--accent); }

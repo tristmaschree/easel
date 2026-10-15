@@ -157,7 +157,7 @@
   display: flex;
   justify-content: space-between;
   gap: 8px;
-  color: #273540 !important;
+  color: var(--jv-fg) !important;
   text-decoration: none !important;
 }
 .jv-card-due:hover .jv-card-due__title {
@@ -170,9 +170,9 @@
 }
 .jv-card-due__when {
   flex: none;
-  color: #6b7780;
+  color: var(--jv-muted);
   font-weight: 700;
 }
 .jv-card-due--none {
-  color: #8b969e !important;
+  color: var(--jv-faint) !important;
 }

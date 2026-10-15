@@ -1,19 +1,26 @@
 :root {
-  --bg: #fff;
-  --fg: #273540;
-  --muted: #6b7780;
-  --line: #e8eaec;
-  --accent: #174ea6; /* Google blue (dark) */
-  --chip: #f2f4f5;
+  /* Google brand palette, same theme as Goldfish (see src/styles/palette.css). */
+  --g-blue: #174ea6;
+  --g-medium-blue: #4285f4;
+  --g-light-grey: #f1f3f4;
+  --g-grey: #9aa0a6;
+  --g-black: #202124;
+
+  --bg: #ffffff;
+  --fg: var(--g-black);
+  --muted: color-mix(in srgb, var(--g-black) 68%, white);
+  --line: color-mix(in srgb, var(--g-grey) 40%, white);
+  --chip: var(--g-light-grey);
+  --accent: var(--g-medium-blue);
+  color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1c2126;
-    --fg: #e8ecef;
-    --muted: #9aa5ad;
-    --line: #2e353c;
-    --accent: #4285f4; /* Google blue */
-    --chip: #2a3138;
+    --bg: var(--g-black);
+    --fg: var(--g-light-grey);
+    --muted: var(--g-grey);
+    --line: color-mix(in srgb, var(--g-grey) 25%, var(--g-black));
+    --chip: color-mix(in srgb, var(--g-grey) 14%, var(--g-black));
   }
 }
 * { box-sizing: border-box; }

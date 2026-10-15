@@ -149,7 +149,7 @@ JV.features.palette = (() => {
             class: `item${i === active ? " active" : ""}`,
             role: "option",
             "aria-selected": String(i === active),
-            style: { "--c": colorOf(e.courseId) || "#8b969e" },
+            style: { "--c": colorOf(e.courseId) || "var(--jv-faint)" },
             onmousemove: () => { if (active !== i) { active = i; highlight(); } },
             onclick: (ev) => choose(e, ev.metaKey || ev.ctrlKey),
           },
@@ -285,7 +285,7 @@ JV.features.palette = (() => {
       position: fixed; inset: 0; z-index: 100001; background: rgba(20, 28, 36, .22);
       display: flex; justify-content: center; align-items: flex-start; padding-top: 12vh;
       font-family: LatoWeb, "Lato Extended", Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 14px; color: #273540;
+      font-size: 14px; color: var(--jv-fg);
     }
     .box {
       width: min(640px, calc(100vw - 32px)); max-height: 70vh; border-radius: 14px;
@@ -294,8 +294,8 @@ JV.features.palette = (() => {
       box-shadow: 0 24px 70px rgba(0,0,0,.28), 0 0 0 1px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.5);
       display: flex; flex-direction: column; overflow: hidden;
     }
-    .search { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,.08); color: #6b7780; }
-    input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 17px; color: #273540; background: transparent; }
+    .search { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,.08); color: var(--jv-muted); }
+    input { flex: 1; border: 0; outline: 0; font: inherit; font-size: 17px; color: var(--jv-fg); background: transparent; }
     .list { list-style: none; margin: 0; padding: 6px; overflow-y: auto; flex: 1; }
     /* Fixed height so one-line rows (Dashboard, Calendar…) match two-line course rows. */
     .item { display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 10px; border-radius: 8px; cursor: pointer; }
@@ -303,11 +303,11 @@ JV.features.palette = (() => {
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
     .text { flex: 1; min-width: 0; }
     .title { font-weight: 600; line-height: 1.3; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .sub { font-size: 12px; line-height: 1.3; color: #6b7780; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .kind { font-size: 11px; color: #6b7780; background: rgba(0,0,0,.06); border-radius: 4px; padding: 2px 6px; flex: none; }
+    .sub { font-size: 12px; line-height: 1.3; color: var(--jv-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .kind { font-size: 11px; color: var(--jv-muted); background: rgba(0,0,0,.06); border-radius: 4px; padding: 2px 6px; flex: none; }
     .item.active .kind { background: var(--jv-blue-light); color: var(--jv-blue-dark); }
-    .none { padding: 24px; text-align: center; color: #8b969e; }
-    footer { display: flex; justify-content: space-between; gap: 8px; padding: 8px 14px; border-top: 1px solid rgba(0,0,0,.08); font-size: 12px; color: #6b7780; }
+    .none { padding: 24px; text-align: center; color: var(--jv-faint); }
+    footer { display: flex; justify-content: space-between; gap: 8px; padding: 8px 14px; border-top: 1px solid rgba(0,0,0,.08); font-size: 12px; color: var(--jv-muted); }
     kbd { font-family: inherit; background: rgba(255,255,255,.6); border: 1px solid rgba(0,0,0,.12); border-radius: 4px; padding: 0 4px; font-size: 11px; }
   `;
 

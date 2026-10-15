@@ -11,18 +11,18 @@ html:not(.jv-no-polish) .item-group-condensed,
 html:not(.jv-no-polish) .context_module {
   margin-top: 16px;
   padding: 0;
-  border: 1px solid #e3e6e9;
+  border: 1px solid var(--jv-line);
   border-radius: 10px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(16, 24, 32, 0.05);
+  box-shadow: 0 1px 2px rgba(32, 33, 36, 0.05);
   overflow: hidden;
 }
 html:not(.jv-no-polish) .item-group-condensed .ig-header,
 html:not(.jv-no-polish) .context_module .ig-header {
   margin: 0;
   border: 0;
-  border-bottom: 1px solid #e8eaec;
-  background: #f7f8f9;
+  border-bottom: 1px solid var(--jv-line);
+  background: var(--jv-surface);
 }
 html:not(.jv-no-polish) .item-group-condensed .ig-list,
 html:not(.jv-no-polish) .context_module .ig-list {
@@ -33,25 +33,25 @@ html:not(.jv-no-polish) .ig-list .ig-row {
   border-right: 0;
 }
 html:not(.jv-no-polish) .ig-list .ig-row:hover {
-  background: #f7f9fb;
+  background: var(--jv-surface);
 }
 
 /* Dashboard cards, dialogs, dropdown menus, flash messages. */
 html:not(.jv-no-polish) .ic-DashboardCard {
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(16, 24, 32, 0.12);
+  box-shadow: 0 1px 3px rgba(32, 33, 36, 0.12);
 }
 html:not(.jv-no-polish) .ui-dialog {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(16, 24, 32, 0.25);
+  box-shadow: 0 20px 60px rgba(32, 33, 36, 0.25);
 }
 html:not(.jv-no-polish) .ui-menu,
 html:not(.jv-no-polish) .al-options,
 html:not(.jv-no-polish) .dropdown-menu {
   border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(16, 24, 32, 0.14);
+  box-shadow: 0 8px 24px rgba(32, 33, 36, 0.14);
 }
 html:not(.jv-no-polish) .ic-flash-success,
 html:not(.jv-no-polish) .ic-flash-error,
@@ -118,10 +118,10 @@ html:not(.jv-no-polish) .Grouping-styles__root.planner-grouping {
   position: relative;
   flex-direction: column;
   margin-top: 12px;
-  border: 1px solid #e3e6e9;
+  border: 1px solid var(--jv-line);
   border-radius: 10px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(16, 24, 32, 0.05);
+  box-shadow: 0 1px 2px rgba(32, 33, 36, 0.05);
 }
 html:not(.jv-no-polish) .Grouping-styles__hero {
   display: flex;
@@ -134,9 +134,9 @@ html:not(.jv-no-polish) .Grouping-styles__hero {
   min-height: 0;
   height: auto;
   padding: 8px 12px;
-  border-bottom: 1px solid #eceef0;
+  border-bottom: 1px solid var(--jv-line);
   border-radius: 10px 10px 0 0;
-  background: #f7f8f9 !important;
+  background: var(--jv-surface) !important;
   text-decoration: none;
 }
 html:not(.jv-no-polish) .Grouping-styles__overlay {
@@ -152,7 +152,7 @@ html:not(.jv-no-polish) .Grouping-styles__title {
   width: auto;
   padding: 0;
   background: transparent;
-  color: #273540;
+  color: var(--jv-fg);
   font-size: 12px;
   letter-spacing: 0.02em;
   text-align: left;
@@ -178,7 +178,7 @@ html:not(.jv-no-polish) .planner-grouping > .NotificationBadge-styles__activityI
   top: -6px;
 }
 html:not(.jv-no-polish) .EmptyDays-styles__root {
-  border-bottom-color: #e3e6e9;
+  border-bottom-color: var(--jv-line);
 }
 
 /* ---------- Global nav: rounded selection ---------- */
@@ -244,7 +244,7 @@ html:not(.jv-no-polish) #nav-tray-portal :has(> [role="dialog"]) {
   background: rgba(255, 255, 255, 0.62) !important;
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   backdrop-filter: blur(18px) saturate(160%);
-  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.6), 1px 0 0 #e3e6e9, 12px 0 28px rgba(16, 24, 32, 0.1);
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.6), 1px 0 0 var(--jv-line), 12px 0 28px rgba(32, 33, 36, 0.1);
   clip-path: inset(0 -60px 0 0);
 }
 /* Dialogs: blur the page behind, glass the window chrome. */
@@ -292,7 +292,7 @@ html:not(.jv-no-polish) .user_content :is(h1, h2, h3, h4, h5, h6)[style*="backgr
   border-left: 3px solid var(--jv-blue);
   border-radius: 2px;
   background: none !important;
-  color: #273540 !important;
+  color: var(--jv-fg) !important;
   font-size: 1.2rem;
   font-weight: 700;
 }
@@ -321,7 +321,7 @@ html:not(.jv-no-polish) .ic-app-nav-toggle-and-crumbs {
 }
 @media (min-width: 768px) {
   html:not(.jv-no-polish) #right-side-wrapper {
-    border-left: 1px solid #e3e6e9;
+    border-left: 1px solid var(--jv-line);
   }
   html:not(.jv-no-polish) .ic-app-nav-toggle-and-crumbs ~ #main #right-side-wrapper::before {
     content: "";
@@ -330,7 +330,7 @@ html:not(.jv-no-polish) .ic-app-nav-toggle-and-crumbs {
     top: -72px;
     width: 1px;
     height: 72px;
-    background: #e3e6e9;
+    background: var(--jv-line);
   }
 }
 html:not(.jv-no-polish) #right-side {
@@ -348,11 +348,11 @@ html:not(.jv-no-polish) #right-side .button-sidebar-wide {
   border-radius: 8px;
   background: none;
   box-shadow: none;
-  color: #273540;
+  color: var(--jv-fg);
   font-size: 14px;
 }
 html:not(.jv-no-polish) #right-side .button-sidebar-wide:hover {
-  background: rgba(39, 53, 64, 0.06);
+  background: var(--jv-hover);
 }
 html:not(.jv-no-polish) #right-side .button-sidebar-wide i {
   color: var(--jv-blue);
@@ -362,7 +362,7 @@ html:not(.jv-no-polish) #right-side h2:not(#minical h2) {
   margin: 22px 0 6px;
   padding: 0;
   border: 0;
-  color: #8b969e;
+  color: var(--jv-faint);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -377,7 +377,7 @@ html:not(.jv-no-polish) #right-side .shared-space {
 html:not(.jv-no-polish) #right-side .mini_month {
   margin-top: 16px;
   padding: 4px 6px 6px;
-  border: 1px solid #e3e6e9;
+  border: 1px solid var(--jv-line);
   border-radius: 10px;
 }
 html:not(.jv-no-polish) #right-side .mini-cal-header,
@@ -479,32 +479,32 @@ html:not(.jv-no-polish) .ig-header .element_toggler {
   padding: 0;
   border: 0;
   background: none;
-  color: #273540;
+  color: var(--jv-fg);
   font: inherit;
   font-weight: 700;
 }
 /* Plain grey buttons become white outlined ones; coloured buttons are left alone. */
 html:not(.jv-no-polish)
   .btn:not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-link):not(.button-sidebar-wide) {
-  border: 1px solid #d5dade;
+  border: 1px solid var(--jv-line-strong);
   background: #fff;
   box-shadow: none;
-  color: #273540;
+  color: var(--jv-fg);
   text-shadow: none;
 }
 html:not(.jv-no-polish)
   .btn:not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-warning):not(.btn-link):not(.button-sidebar-wide):hover {
-  background: #f5f7f8;
+  background: var(--jv-surface);
 }
 /* Zebra-striped tables (People) become plain rows with hairlines and a hover. */
 html:not(.jv-no-polish) #content .ic-Table--striped tbody tr {
   background: none !important;
 }
 html:not(.jv-no-polish) #content .ic-Table--striped :is(td, th) {
-  border-bottom: 1px solid #eceef0;
+  border-bottom: 1px solid var(--jv-line);
 }
 html:not(.jv-no-polish) #content .ic-Table--striped tbody tr:hover {
-  background: #f7f9fb !important;
+  background: var(--jv-surface) !important;
 }
 /* Where a page still has its own left menu (Account pages, or the tree
    sidebar switched off), give it the same rows as the tree. */
@@ -513,12 +513,12 @@ html:not(.jv-no-polish) #section-tabs a {
   padding: 6px 10px;
   border: 0 !important;
   border-radius: 8px;
-  color: #47535c;
+  color: var(--jv-fg-soft);
   font-size: 14px;
   text-decoration: none;
 }
 html:not(.jv-no-polish) #section-tabs a:hover {
-  background: rgba(39, 53, 64, 0.06);
+  background: var(--jv-hover);
 }
 html:not(.jv-no-polish) #section-tabs a.active {
   background: color-mix(in srgb, var(--jv-blue-light) 70%, transparent);
@@ -535,8 +535,8 @@ html:not(.jv-no-polish) #immersive_reader_mount_point button > span {
   font-size: 13px !important;
 }
 html:not(.jv-no-polish) #immersive_reader_mount_point button > span {
-  border: 1px solid #d5dade !important;
+  border: 1px solid var(--jv-line-strong) !important;
 }
 html:not(.jv-no-polish) #immersive_reader_mount_point button:hover > span {
-  background: rgba(39, 53, 64, 0.06) !important;
+  background: var(--jv-hover) !important;
 }

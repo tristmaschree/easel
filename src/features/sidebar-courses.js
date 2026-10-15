@@ -42,7 +42,7 @@ JV.features.sidebarCourses = (() => {
     const m = /^#?([0-9a-f]{6})$/i.exec(hex || "");
     if (!m) return "#fff";
     const [r, g, b] = [0, 2, 4].map((i) => parseInt(m[1].slice(i, i + 2), 16));
-    return (r * 299 + g * 587 + b * 114) / 1000 > 160 ? "#1c2126" : "#fff";
+    return (r * 299 + g * 587 + b * 114) / 1000 > 160 ? "#202124" : "#fff";
   }
 
   function dueSoonByCourse(items) {

@@ -23,4 +23,16 @@
   --jv-grey-light: #f1f3f4;
   --jv-grey: #9aa0a6;
   --jv-black: #202124;
+
+  /* Neutrals, all derived from the palette's Black and Grey (as in Goldfish),
+     so greys are true greys rather than Canvas's slate blue-greys. The
+     palette's own Grey is too light for text on white, hence the mixes. */
+  --jv-fg: var(--jv-black);
+  --jv-fg-soft: color-mix(in srgb, var(--jv-black) 84%, white);
+  --jv-muted: color-mix(in srgb, var(--jv-black) 68%, white);
+  --jv-faint: color-mix(in srgb, var(--jv-black) 52%, white);
+  --jv-line: color-mix(in srgb, var(--jv-grey) 40%, white);
+  --jv-line-strong: color-mix(in srgb, var(--jv-grey) 70%, white);
+  --jv-surface: var(--jv-grey-light);
+  --jv-hover: color-mix(in srgb, var(--jv-black) 6%, transparent);
 }
