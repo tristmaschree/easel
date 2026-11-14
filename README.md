@@ -18,13 +18,26 @@ Each feature can be toggled from the toolbar popup.
 
 > Built and tested on Yale's Canvas (`yale.instructure.com`) as a student. It should work on other `*.instructure.com` schools, but layouts and course-code formats vary. If something looks off, switch that feature off in the popup.
 
-## Install (unpacked)
+## Install in Chrome (unpacked)
 
 1. Open `chrome://extensions` and turn on **Developer mode**.
 2. Click **Load unpacked** and pick this folder.
 3. Reload any open Canvas tabs.
 
 After editing code, click the reload icon on the extension's card, then reload Canvas.
+
+## Install in Safari (macOS, iPhone, iPad)
+
+The Xcode project in `safari/` wraps the same extension files, so there is nothing separate to keep in sync.
+
+1. Open `safari/Easel/Easel.xcodeproj` in Xcode.
+2. Pick the **Easel (macOS)** scheme and press Run. To sign it, choose your team under Signing & Capabilities.
+3. Unsigned local build only: in Safari, open Settings → Advanced, turn on **Show features for web developers**, then go to Settings → Developer and turn on **Allow unsigned extensions**. You have to do this again each time Safari restarts.
+4. Turn on Easel in Safari Settings → Extensions, then allow it on `instructure.com` (click Easel's toolbar icon on a Canvas page and choose **Always Allow on This Website**).
+
+For iPhone or iPad, run the **Easel (iOS)** scheme on a device or simulator. Then turn it on under Settings → Apps → Safari → Extensions.
+
+The project references `src/`, `popup/` and `icons/` as folders, so new files inside them are included automatically. If you add a new top-level file or folder, add it to the extension target's Copy Bundle Resources in Xcode.
 
 ## Layout
 
